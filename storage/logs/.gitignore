@@ -1,0 +1,2 @@
+# Ignore .env file
+storage/logs/laravel.log
