@@ -293,7 +293,7 @@ function mostrarAlertaReload(titulo, mensaje, tipo) {
     }).then((result) => {
         if (result.isConfirmed) {
            // location.reload(); // 🔄 Recarga la página al hacer clic en "Aceptar"
-            window.location.href = "https://unidadfamiliamedellin.com.co/";
+            window.location.href = "https://www.medellin.gov.co/";
 
         }
     });
