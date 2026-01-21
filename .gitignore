@@ -22,3 +22,5 @@
 # Logs
 /storage/logs/
 
+storage/*
+bootstrap/cache/*
