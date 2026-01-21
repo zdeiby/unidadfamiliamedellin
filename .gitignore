@@ -1,2 +1,11 @@
+# Laravel runtime
+/storage/*
+!/storage/.gitkeep
+/bootstrap/cache/*
+!/bootstrap/cache/.gitkeep
 
-/informeactividades.zip
+# Logs
+/storage/logs/
+
+# Env
+.env
