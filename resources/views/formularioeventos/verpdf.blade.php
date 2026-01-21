@@ -2,209 +2,305 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de Asistencia</title>
+    <title>FO-GINF Asistencia</title>
     <style>
-        * {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-        }
-        @page {
-            margin: 2cm 1.5cm 1.5cm 1.5cm;
-        }
-        .titulo {
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .tabla-info {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }
-        .tabla-info td {
-            border: 1px solid black;
-            padding: 5px;
-        }
-        .tabla {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        .tabla th, .tabla td {
-            border: 1px solid black;
-            padding: 6px;
-            text-align: center;
-        }
-        .tabla th {
-            background-color: #e6e6e6;
-            font-weight: bold;
-        }
-        .firma {
-            height: 40px;
-        }
-        .pie {
-            font-size: 10px;
-            margin-top: 20px;
-            text-align: justify;
-        }
-        .firmas {
-            margin-top: 40px;
-            text-align: center;
-            width: 100%;
-        }
-        .firmas td {
-            width: 50%;
-            padding-top: 30px;
-        }
-        .firmas td span {
-            display: block;
-            border-top: 1px solid black;
-            width: 80%;
-            margin: 0 auto;
-            padding-top: 5px;
-        }
-    </style>
+        *{ font-family: Arial, sans-serif; font-size: 10px; }
+        @page { margin: 90px 18px 22px 18px; } /* deja espacio para header fijo */
+
+        /* ===== Header fijo (Dompdf) ===== */
+     </style>
 </head>
 <body>
 
-<!-- 📌 ENCABEZADO DEL DOCUMENTO -->
-<table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
+<style>
+    @page { margin: 95px 18px 22px 18px; }
+    header { position: fixed; top: -75px; left: 0; right: 0; height: 75px; }
+</style>
+
+<header>
+    <!-- Barra superior -->
+    <div style="height:10px; background:#1aa0a8;"></div>
+
+    <!-- Tabla principal del encabezado -->
+    <table style="width:100%; border-collapse:collapse; border-left:1px solid #000; border-right:1px solid #000;">
+        <tr>
+            <!-- Columna izquierda (Cód / Versión) -->
+            <td style="width:18%; padding:0; vertical-align:top; border-top:1px solid #000; border-bottom:1px solid #000; border-right:1px solid #000;">
+                <table style="width:100%; border-collapse:collapse;">
+                    <tr>
+                        <td style="padding:6px; font-weight:bold; font-size:11px; text-align:left; border-bottom:1px solid #000;">
+                            Cód. FO-GINF-012
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:6px; font-weight:bold; font-size:11px; text-align:left;">
+                            Versión 8
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+            <!-- Centro -->
+            <td style="width:64%; padding:6px 8px; text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; border-right:1px solid #000;">
+                <div style="font-weight:bold; font-size:12px; line-height:1.1;">Formato</div>
+                <div style="font-weight:bold; font-size:12px; color:#0e7f86; line-height:1.1;">
+                    FO-GINF Asistencia a Reuniones, Eventos y Capacitaciones
+                </div>
+            </td>
+
+            <!-- Derecha (vacía / paginado si quieres) -->
+            <td style="width:18%; padding:6px 8px; text-align:right; border-top:1px solid #000; border-bottom:1px solid #000;">
+                <!-- Página 1 de X (opcional) -->
+                <!-- <span style="font-size:10px;">Página 1 de {{ $datos['totalPaginas'] ?? 1 }}</span> -->
+            </td>
+        </tr>
+    </table>
+
+    <!-- Barra inferior -->
+    <div style="height:10px; background:#0e7f86;"></div>
+</header>
+
+
+{{-- ===== Bloque superior estilo FO-GINF (SIN CSS externo) ===== --}}
+<table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:10px;">
+    {{-- FILA 1: Tema + Tipo Reunión (Capacitación/Seguimiento) + Modalidad (Presencial) --}}
     <tr>
-        <!-- LOGO -->
-        <td style="width: 20%; border: 1px solid black; text-align: center; padding: 5px;">
-        <img src="{{ asset('imagenes/logo_sap_2.png') }}" alt="Logo Sapiencia" style="height: 50px;">
-
+        <td style="border:1px solid #000; width:10%; padding:4px; font-weight:bold;">Tema</td>
+        <td style="border:1px solid #000; width:34%; padding:4px;">
+            {{ $datos['tema'] ?? '' }}
         </td>
 
-        <!-- FORMATO -->
-        <td style="width: 50%; border: 1px solid black; text-align: center; font-weight: bold; font-size: 14px;">
-            FORMATO
+        {{-- Columna título Tipo Reunión (ocupa 1 columna vertical) --}}
+        <td rowspan="5" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center;">
+            Tipo de<br>Reunión
         </td>
 
-        <!-- FORMATO / VERSIÓN / PÁGINA -->
-        <td style="width: 30%; border: 1px solid black; text-align: left; font-size: 12px;">
-            <table style="width: 100%; border-collapse: collapse;">
+        {{-- Tipo Reunión: 2 columnas (texto + checkbox) --}}
+        <td style="border:1px solid #000; width:14%; padding:4px; font-weight:bold;">Capacitación</td>
+        <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
+            @if(($datos['tipo_reunion'] ?? '')=='Capacitación') ✓ @endif
+        </td>
+
+        <td style="border:1px solid #000; width:14%; padding:4px; font-weight:bold;">Seguimiento</td>
+        <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
+            @if(($datos['tipo_reunion'] ?? '')=='Seguimiento') ✓ @endif
+        </td>
+
+        {{-- Columna título Modalidad Reunión --}}
+        <td rowspan="5" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center;">
+            Modalidad<br>Reunión
+        </td>
+
+        <td style="border:1px solid #000; width:10%; padding:4px; font-weight:bold;">Presencial</td>
+        <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
+            @if(($datos['modalidad'] ?? '')=='Presencial') ✓ @endif
+        </td>
+    </tr>
+
+    {{-- FILA 2: Dependencia + Organizador + Entrenamiento/Toma + Virtual --}}
+    <tr>
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Dependencia</td>
+        <td style="border:1px solid #000; padding:0;">
+            <table style="width:100%; border-collapse:collapse;">
                 <tr>
-                    <td style="border-bottom: 1px solid black;">F-AP-GA-004</td>
-                </tr>
-                <tr>
-                    <td style="border-bottom: 1px solid black;">Versión: 01</td>
-                </tr>
-                <tr>
-                <td>Página 1 de {{ $datos['totalPaginas'] }}</td>
+                    <td style="border-right:1px solid #000; padding:4px;">
+                        {{ $datos['dependencia'] ?? '' }}
+                    </td>
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:20%;">
+                        Organizador
+                    </td>
+                    <td style="padding:4px;">
+                        {{ $datos['organizador'] ?? '' }}
+                    </td>
                 </tr>
             </table>
         </td>
-    </tr>
-</table>
 
-<!-- 📌 TÍTULO -->
-<table style="width: 100%;border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; border-collapse: collapse;">
-    <tr>
-        <td style="text-align: center; font-weight: bold; padding: 5px; font-size: 14px;">
-            LISTADO DE ASISTENCIA
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Entrenamiento</td>
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['tipo'] ?? '')=='Entrenamiento') ✓ @endif
+        </td>
+
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Toma de decisiones</td>
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['tipo'] ?? '')=='Toma de decisiones') ✓ @endif
+        </td>
+
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Virtual</td>
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['modalidad'] ?? '')=='Virtual') ✓ @endif
         </td>
     </tr>
-</table>
 
-<br>
-
-<table style="border-collapse: collapse; width: 100%; border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;">
+    {{-- FILA 3: Responsable + Departamento/Ciudad + Formación/Informativa + Mixta --}}
     <tr>
-        <td style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; padding: 8px;">
-            <strong>TEMA:</strong> {{$datos['titulo']}}
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Responsable</td>
+        <td style="border:1px solid #000; padding:0;">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <td style="border-right:1px solid #000; padding:4px;">
+                        {{ $datos['responsable'] ?? '' }}
+                    </td>
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:20%;">
+                        Departamento
+                    </td>
+                    <td style="border-right:1px solid #000; padding:4px;">
+                        {{ $datos['departamento'] ?? '' }}
+                    </td>
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:14%;">
+                        Ciudad
+                    </td>
+                    <td style="padding:4px;">
+                        {{ $datos['ciudad'] ?? '' }}
+                    </td>
+                </tr>
+            </table>
         </td>
+
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Formación</td>
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['tipo'] ?? '')=='Formación') ✓ @endif
+        </td>
+
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Informativa</td>
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['tipo'] ?? '')=='Informativa') ✓ @endif
+        </td>
+
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Mixta</td>
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['modalidad'] ?? '')=='Mixta') ✓ @endif
+        </td>
+    </tr>
+
+    {{-- FILA 4: (vacío a la izquierda para mantener grid) + Otra --}}
+    
+
+    {{-- FILA 5: Fecha + Lugar + Hora inicia + Hora termina (todo en una fila como el PDF) --}}
+    <tr>
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Fecha</td>
+        <td style="border:1px solid #000; padding:0;">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <td style="border-right:1px solid #000; padding:4px; width:18%;">
+                        {{ $datos['fecha'] ?? '' }}
+                    </td>
+
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:10%;">Lugar</td>
+                    <td style="border-right:1px solid #000; padding:4px; width:32%;">
+                        {{ $datos['lugar'] ?? '' }}
+                    </td>
+
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:12%;">Hora inicia</td>
+                    <td style="border-right:1px solid #000; padding:4px; width:10%;">
+                        {{ $datos['hora_inicia'] ?? '' }}
+                    </td>
+
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:12%;">Hora termina</td>
+                    <td style="padding:4px; width:10%;">
+                        {{ $datos['hora_termina'] ?? '' }}
+                    </td>
+                </tr>
+            </table>
+        </td>
+
+        {{-- Rellena columnas del grid (porque Tipo/Modalidad tienen rowspan=5) --}}
+        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
+        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
+        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
+        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
     </tr>
 </table>
 
 
 
+{{-- ===== Aviso de privacidad ===== --}}
+<div class="aviso">
+    <span class="label">AVISO DE PRIVACIDAD Y AUTORIZACIÓN:</span>
+    En cumplimiento de la Ley 1581 de 2012 y sus normas reglamentarias y complementarias autorizo al Distritos Especial de Ciencia, Tecnología e Innovación de Medellín identificado con NIT 890.905.211-1, como Responsable para tratar mis datos personales conforme a su Política de Tratamiento de Datos Personales Decreto 1096 de 2018 disponible en www.medellin.gov.co, para que sean incluidos en sus bases de datos, para efectuar tratamiento de recolección, almacenamiento, uso, circulación, indexación y analítica, sobre los datos personales bajo la finalidad principal del Distrito de Medellín en relación a la focalización en la asignación de servicios y beneficios de acuerdo con la oferta institucional vigente además de la finalidad del registro o evidencia de la asistencia a la reunión o evento relacionado en el formato diligenciado; esta información podrá ser almacenada en archivos asociados a base de datos relacionadas con los eventos y reuniones de la dependencia que los citó a la sesión, en esa medida, declaro que la información suministrada es correcta, veraz, verificable y actualizada. Declaro que conozco el derecho a conocer, consultar, actualizar, rectificar y suprimir mi información, solicitar prueba de esta autorización y revocarla, los que puedo ejercer a través de los canales: portal web www.medellin.gov.co, Línea de Atención 4444144, Centro de Servicios a la Ciudadanía (Calle 44 N 52 - 165 la Alpujarra) y sedes externas. SU ACEPTACIÓN SE PERFECCIONA al momento de diligenciar y/o firmar el presente documento bien sea de manera manuscrita o mediante el uso de firma electrónica dispuesta en el sistema electrónico adoptado por el Distrito de Medellín.
+</div>
 
-    <table class="tabla-info">
+{{-- ===== Tabla asistentes ===== --}}
+<table class="grid asist" style="margin-top:10px;">
+    <thead>
         <tr>
-            <td><strong>FECHA:</strong> {{$datos['fecha']}}</td>
-            <td><strong>HORARIO:</strong> {{$datos['horaInicio']}} a {{$datos['horaFin']}}</td>
+            <th style="width:3%;">N°</th>
+            <th style="width:10%;">Tipo de<br>Documento</th>
+            <th style="width:10%;">Número de<br>Documento</th>
+            <th style="width:17%;">Nombres y Apellidos</th>
+            <th style="width:12%;">Cargo /<br>Empleo/<br>Calidad en<br>la que actúa</th>
+            <th style="width:16%;">Empresa / Entidad /<br>Dependencia /<br>Organización</th>
+            <th style="width:12%;">Teléfono Fijo /<br>Número Celular</th>
+            <th style="width:12%;">Correo Electrónico</th>
+            <th style="width:8%;">Firma</th>
         </tr>
-        <tr>
-            <td><strong>LUGAR:</strong> {{$datos['contenido']}}</td>
-            <td><strong>RESPONSABLE:</strong> {{$datos['organizador']}}</td>
-        </tr>
-    </table>
+    </thead>
 
-    <table class="tabla">
+    <tbody>
+@foreach($integrante as $index => $a)
+    <tr>
+        <td>{{ $index + 1 }}</td>
+
+        {{-- Tipo de documento: si no lo tienes en BD, déjalo fijo --}}
+        <td>{{ $a->tipo_documento ?? 'Cédula de Ciudadanía' }}</td>
+
+        {{-- Tu PK es documento --}}
+        <td>{{ $a->documento ?? '' }}</td>
+
+        {{-- Si ya tienes nombres separados como antes --}}
+        <td class="left">
+            {{ trim(($a->nombre1 ?? '').' '.($a->nombre2 ?? '').' '.($a->apellido1 ?? '').' '.($a->apellido2 ?? '')) }}
+        </td>
+
+        <td class="left">{{ $a->cargo ?? '' }}</td>
+
+        {{-- Si no tienes empresa/entidad, puedes usar algo existente o dejar vacío --}}
+        <td class="left">{{ $a->empresa ?? '' }}</td>
+
+        <td>{{ $a->telefono ?? '' }}</td>
+        <td class="left">{{ $a->correo ?? '' }}</td>
+
+        <td class="firma-box">
+            @if(!empty($a->firma))
+                {{-- DOMPDF: usa public_path, NO asset --}}
+                <img class="firma-img" src="{{ public_path('firma/' . $a->firma) }}">
+            @endif
+        </td>
+    </tr>
+@endforeach
+</tbody>
+
+</table>
+
+{{-- ===== Página 3: Historial del evento (opcional) ===== --}}
+@if(!empty($historial))
+    <div class="page-break"></div>
+
+    <div class="hist-title">Historial del evento</div>
+
+    <table class="grid hist">
         <thead>
             <tr>
-                <th>No.</th>
-                <th>NOMBRE</th>
-                <th>ORGANIZACIÓN Y CARGO</th>
-                <th>CORREO ELECTRÓNICO</th>
-                <th>TELÉFONO</th>
-                <th>FIRMA</th>
+                <th style="width:5%;">#</th>
+                <th style="width:55%;">Mensaje</th>
+                <th style="width:15%;">Fecha</th>
+                <th style="width:10%;">Ciudad</th>
+                <th style="width:15%;">Dirección IP</th>
             </tr>
         </thead>
         <tbody>
-    @php $totalRegistros = count($integrante); @endphp
-
-    @foreach($integrante as $index => $asistente)
-        <tr>
-            <td>{{ $index + 1 }}</td>
-            <td>{{ $asistente->nombre1 }} {{ $asistente->nombre2 }} {{ $asistente->apellido1 }} {{ $asistente->apellido2 }}</td>
-            <td>{{ $asistente->cargo }}</td>
-            <td>{{ $asistente->correo }}</td>
-            <td>{{ $asistente->telefono }}</td>
-            <td class="firma">
-                @if(!empty($asistente->firma))
-                    <img src="{{ asset('firma/' . $asistente->firma) }}" width="100">
-                @endif
-            </td>
-        </tr>
-    @endforeach
-
-    {{-- 🔹 Agregar filas vacías hasta llegar a 25 --}}
-    <!-- @for ($i = $totalRegistros + 1; $i <= 25; $i++)
-        <tr>
-            <td>{{ $i }}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="firma"></td>
-        </tr>
-    @endfor -->
-</tbody>
-
+            @foreach($historial as $idx => $h)
+                <tr>
+                    <td>{{ $idx + 1 }}</td>
+                    <td>{{ $h['mensaje'] ?? '' }}</td>
+                    <td>{{ $h['fecha'] ?? '' }}</td>
+                    <td>{{ $h['ciudad'] ?? '' }}</td>
+                    <td>{{ $h['ip'] ?? '' }}</td>
+                </tr>
+            @endforeach
+        </tbody>
     </table>
-
-    <br>
-
-<!-- 📌 SECCIÓN ADICIONAL (CUADROS FINALES) -->
-<table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-    <tr>
-        <td style="width: 50%; font-weight:bold; border: 1px solid black; padding: 5px;">Elaboró: Profesional Universitario de Apoyo Administrativo</td>
-        <td style="width: 50%; border: 1px solid black; padding: 5px;">Revisó: Subdirector - Administrativa, Financiera y de Apoyo a la Gestión</td>
-        <td style="width: 50%; border: 1px solid black; padding: 5px;">Aprobó: Subdirector - Administrativa, Financiera y de Apoyo a la Gestión</td>
-
-    </tr>
-    <tr>
-        <td style="width: 50%;  border: 1px solid black; padding: 5px;">Fecha: 10 de mayo de 2018</td>
-        <td style="width: 50%;  border: 1px solid black; padding: 5px;">Fecha: 10 de mayo de 2018</td>
-        <td style="width: 50%;  border: 1px solid black; padding: 5px;">Fecha: 10 de mayo de 2018</td>
-    </tr>
-  
-</table>
-
-
-
-<!-- 📌 AVISO LEGAL -->
-<table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
-<tr>
-        <td style="font-size: 10px; text-align: justify; padding: 5px;">
-            Con la firma del presente formato usted autoriza a Sapiencia para que utilice la información consignada en el mismo con fines estadísticos y/o académicos. En cumplimiento del artículo 7 del Decreto 1377 de 2013, por medio del cual se reglamenta la Ley 1581 de 2012 en la que expidió el régimen general de la protección de datos personales.
-        </td>
-    </tr>
-</table>
+@endif
 
 </body>
 </html>

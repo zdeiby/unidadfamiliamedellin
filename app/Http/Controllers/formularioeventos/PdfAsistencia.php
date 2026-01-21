@@ -35,6 +35,8 @@ class PdfAsistencia extends Controller
         // Pasar la cantidad total de páginas a la vista
         $datos['totalPaginas'] = $totalPaginas;
         //$datos['filasPorPagina'] = $filasPorPagina;
+
+        
     
         // 📝 Generar PDF
         $pdf = PDF::loadView('formularioeventos/verpdf', compact('datos', 'integrante'))  ->setPaper('a4', 'landscape');
