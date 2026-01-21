@@ -62,20 +62,18 @@
 
 
 {{-- ===== Bloque superior estilo FO-GINF (SIN CSS externo) ===== --}}
-<table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:10px;">
-    {{-- FILA 1: Tema + Tipo Reunión (Capacitación/Seguimiento) + Modalidad (Presencial) --}}
+<table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:10px; table-layout:fixed;">
+    {{-- FILA 1 --}}
     <tr>
         <td style="border:1px solid #000; width:10%; padding:4px; font-weight:bold;">Tema</td>
         <td style="border:1px solid #000; width:34%; padding:4px;">
             {{ $datos['tema'] ?? '' }}
         </td>
 
-        {{-- Columna título Tipo Reunión (ocupa 1 columna vertical) --}}
-        <td rowspan="5" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center;">
+        <td rowspan="5" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center; vertical-align:middle;">
             Tipo de<br>Reunión
         </td>
 
-        {{-- Tipo Reunión: 2 columnas (texto + checkbox) --}}
         <td style="border:1px solid #000; width:14%; padding:4px; font-weight:bold;">Capacitación</td>
         <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
             @if(($datos['tipo_reunion'] ?? '')=='Capacitación') ✓ @endif
@@ -86,8 +84,7 @@
             @if(($datos['tipo_reunion'] ?? '')=='Seguimiento') ✓ @endif
         </td>
 
-        {{-- Columna título Modalidad Reunión --}}
-        <td rowspan="5" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center;">
+        <td rowspan="5" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center; vertical-align:middle;">
             Modalidad<br>Reunión
         </td>
 
@@ -97,16 +94,16 @@
         </td>
     </tr>
 
-    {{-- FILA 2: Dependencia + Organizador + Entrenamiento/Toma + Virtual --}}
+    {{-- FILA 2 --}}
     <tr>
         <td style="border:1px solid #000; padding:4px; font-weight:bold;">Dependencia</td>
         <td style="border:1px solid #000; padding:0;">
-            <table style="width:100%; border-collapse:collapse;">
+            <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
                 <tr>
-                    <td style="border-right:1px solid #000; padding:4px;">
+                    <td style="border-right:1px solid #000; padding:4px; width:32%;">
                         {{ $datos['dependencia'] ?? '' }}
                     </td>
-                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:20%;">
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:18%;">
                         Organizador
                     </td>
                     <td style="padding:4px;">
@@ -132,22 +129,22 @@
         </td>
     </tr>
 
-    {{-- FILA 3: Responsable + Departamento/Ciudad + Formación/Informativa + Mixta --}}
+    {{-- FILA 3 --}}
     <tr>
         <td style="border:1px solid #000; padding:4px; font-weight:bold;">Responsable</td>
         <td style="border:1px solid #000; padding:0;">
-            <table style="width:100%; border-collapse:collapse;">
+            <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
                 <tr>
-                    <td style="border-right:1px solid #000; padding:4px;">
+                    <td style="border-right:1px solid #000; padding:4px; width:32%;">
                         {{ $datos['responsable'] ?? '' }}
                     </td>
-                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:20%;">
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:18%;">
                         Departamento
                     </td>
-                    <td style="border-right:1px solid #000; padding:4px;">
+                    <td style="border-right:1px solid #000; padding:4px; width:20%;">
                         {{ $datos['departamento'] ?? '' }}
                     </td>
-                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:14%;">
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:10%;">
                         Ciudad
                     </td>
                     <td style="padding:4px;">
@@ -173,16 +170,30 @@
         </td>
     </tr>
 
-    {{-- FILA 4: (vacío a la izquierda para mantener grid) + Otra --}}
-    
+    {{-- ✅ FILA 4 (LA QUE FALTABA): "Otra" y espacios para cuadrar la grilla --}}
+    <tr>
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">&nbsp;</td>
+        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
 
-    {{-- FILA 5: Fecha + Lugar + Hora inicia + Hora termina (todo en una fila como el PDF) --}}
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Otra</td>
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['tipo'] ?? '')=='Otra') ✓ @endif
+        </td>
+
+        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
+        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
+
+        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
+        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
+    </tr>
+
+    {{-- FILA 5 --}}
     <tr>
         <td style="border:1px solid #000; padding:4px; font-weight:bold;">Fecha</td>
         <td style="border:1px solid #000; padding:0;">
-            <table style="width:100%; border-collapse:collapse;">
+            <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
                 <tr>
-                    <td style="border-right:1px solid #000; padding:4px; width:18%;">
+                    <td style="border-right:1px solid #000; padding:4px; width:16%;">
                         {{ $datos['fecha'] ?? '' }}
                     </td>
 
@@ -197,20 +208,21 @@
                     </td>
 
                     <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:12%;">Hora termina</td>
-                    <td style="padding:4px; width:10%;">
+                    <td style="padding:4px; width:8%;">
                         {{ $datos['hora_termina'] ?? '' }}
                     </td>
                 </tr>
             </table>
         </td>
 
-        {{-- Rellena columnas del grid (porque Tipo/Modalidad tienen rowspan=5) --}}
+        {{-- relleno para cuadrar con las columnas a la derecha --}}
         <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
         <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
         <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
         <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
     </tr>
 </table>
+
 
 
 
