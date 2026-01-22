@@ -54,7 +54,7 @@
                 <div class="col-md-2 mb-3">
                     <label class="form-label">Tipo de reunión:</label>
                     <select name="tipo_reunion" class="form-select form-select-sm" required>
-                                {! $t1_tipo_reunion !}
+                                {!! $t1_tipo_reunion !!}
                     </select>
                 </div>
 
@@ -62,7 +62,7 @@
                 <div class="col-md-2 mb-3">
                     <label class="form-label">Modalidad:</label>
                     <select name="modalidad_reunion" class="form-select form-select-sm" required>
-                                {! $t1_modalidad !}
+                                {!! $t1_modalidad !!}
                     </select>
                 </div>
             </div>
