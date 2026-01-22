@@ -25,6 +25,8 @@ class PdfAsistencia extends Controller
             'horaFin' => date("g:i A", strtotime($evento->end_time)),
             'organizador' => $evento->organizer,
             'fecha' => date('d/m/Y', strtotime($evento->start_date)),
+            'tipo_reunion'    => (int) $evento->tipo_reunion,
+            'modalidad_reunion'       => (int) $evento->modalidad_reunion,
         ];
 
 
