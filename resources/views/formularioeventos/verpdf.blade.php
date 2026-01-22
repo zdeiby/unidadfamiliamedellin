@@ -29,12 +29,12 @@
                 <table style="width:100%; border-collapse:collapse;">
                     <tr>
                         <td style="padding:6px; font-weight:bold; font-size:11px; text-align:left; border-bottom:1px solid #000;">
-                            Cód. FO-GINF-012
+                            Cód. FO-GINF-076
                         </td>
                     </tr>
                     <tr>
                         <td style="padding:6px; font-weight:bold; font-size:11px; text-align:left;">
-                            Versión 8
+                            Versión 9
                         </td>
                     </tr>
                 </table>
@@ -44,15 +44,20 @@
             <td style="width:64%; padding:6px 8px; text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; border-right:1px solid #000;">
                 <div style="font-weight:bold; font-size:12px; line-height:1.1;">Formato</div>
                 <div style="font-weight:bold; font-size:12px; color:#0e7f86; line-height:1.1;">
-                    FO-GINF Asistencia a Reuniones, Eventos y Capacitaciones
+                    FO-GINF Asistencia a Reuniones, Eventos y Capacitaciones - Con autorización del Titular
                 </div>
             </td>
 
             <!-- Derecha (vacía / paginado si quieres) -->
-            <td style="width:18%; padding:6px 8px; text-align:right; border-top:1px solid #000; border-bottom:1px solid #000;">
-                <!-- Página 1 de X (opcional) -->
-                <!-- <span style="font-size:10px;">Página 1 de {{ $datos['totalPaginas'] ?? 1 }}</span> -->
-            </td>
+
+            <td style="width: 17%; border: 1px solid black; text-align: center; padding: 5px;">
+        <img src="{{ asset('imagenes/logo_sap_2.png') }}" alt="Logo Sapiencia" style="height: 37px;">
+
+        </td>
+            <!-- <td style="width:18%; padding:6px 8px; text-align:right; border-top:1px solid #000; border-bottom:1px solid #000;">
+                 Página 1 de X (opcional)
+                 <span style="font-size:10px;">Página 1 de {{ $datos['totalPaginas'] ?? 1 }}</span>
+            </td> -->
         </tr>
     </table>
 
@@ -671,9 +676,40 @@
 <table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:10px; margin-top:8px;">
     <tr>
         <td style="border:1px solid #000; padding:6px 8px; text-align:justify; line-height:1.25;">
-            <strong>AVISO DE PRIVACIDAD Y AUTORIZACIÓN:</strong>
-            En cumplimiento de la Ley 1581 de 2012 y sus normas reglamentarias y complementarias autorizo al Distritos Especial de Ciencia, Tecnología e Innovación de Medellín identificado con NIT 890.905.211-1, como Responsable para tratar mis datos personales conforme a su Política de Tratamiento de Datos Personales Decreto 1096 de 2018 disponible en www.medellin.gov.co, para que sean incluidos en sus bases de datos, <strong>para efectuar tratamiento de recolección, almacenamiento, uso, circulación, indexación y analítica, sobre los datos personales bajo la finalidad principal del Distrito de Medellín en relación a la focalización en la asignación de servicios y beneficios de acuerdo con la oferta institucional vigente además de la finalidad del registro o evidencia de la asistencia a la reunión o evento relacionado en el formato diligenciado</strong>; esta información podrá ser almacenada en archivos asociados a base de datos relacionadas con los eventos y reuniones de la dependencia que los citó a la sesión, en esa medida, declaro que la información suministrada es correcta, veraz, verificable y actualizada. Declaro que conozco el derecho a conocer, consultar, actualizar, rectificar y suprimir mi información, solicitar prueba de esta autorización y revocarla, los que puedo ejercer a través de los canales: portal web www.medellin.gov.co, Línea de Atención 4444144, Centro de Servicios a la Ciudadanía (Calle 44 N 52 - 165 la Alpujarra) y sedes externas.
-            SU ACEPTACIÓN SE PERFECCIONA al momento de diligenciar y/o firmar el presente documento bien sea de manera manuscrita o mediante el uso de firma electrónica dispuesta en el sistema electrónico adoptado por el Distrito de Medellín.
+             <strong>AVISO DE PRIVACIDAD Y AUTORIZACIÓN:</strong>
+    En cumplimiento de la Ley 1581 de 2012 y sus normas reglamentarias y complementarias
+    <strong>autorizo al Distrito Especial de Ciencia, Tecnología e Innovación de Medellín</strong>
+    identificado con NIT <strong>890.905.211-1</strong> y con domicilio en el Centro Administrativo
+    Distrital (CAD), Calle 44 N° 52–165, y contacto en la Línea Única (+57) 6044444144, como
+    <strong>Responsable</strong> para tratar mis datos personales conforme a su
+    <strong>Política de Tratamiento de Datos Personales Decreto 0268 de 2025</strong>
+    disponible en <strong>www.medellin.gov.co</strong>, con las finalidades:
+    <strong>Registro de asistencia a eventos, reuniones o actividades institucionales;</strong>
+    para comunicaciones, notificaciones o requerimientos relacionados con
+    <strong>trámites administrativos del Distrito de Medellín</strong>.
+    Con la presente autorización se <strong>recolectarán datos sensibles</strong> y entiendo que su
+    entrega es facultativa y por lo tanto puedo <strong>abstenerme de suministrarlos</strong>,
+    teniendo siempre presente el derecho a no responder este tipo de preguntas conforme a lo
+    establecido en la Ley 1581 de 2012 y sus normas reglamentarias.
+
+    La información personal suministrada podrá ser almacenada de forma segura en archivos o
+    bases de datos del Distrito de Medellín para los fines indicados; <strong>también</strong>,
+    podrá ser transmitida a terceros encargados del tratamiento, con quienes el Distrito tenga
+    relación contractual o legal, para cumplir con las finalidades aquí descritas y las
+    obligaciones legales del Distrito. En esa medida declaro que esta información es
+    <strong>correcta, veraz, verificable y actualizada</strong> y podrá ser sometida a operaciones de
+    <strong>recolección, almacenamiento, uso, circulación, indexación y/o analítica</strong>
+    dentro del marco legal aplicable.
+   
+    He sido informado sobre mi derecho a <strong>conocer, consultar, actualizar, rectificar y suprimir</strong>
+    mi información; acceder a ella de forma gratuita; solicitar prueba de esta autorización y
+    revocarla; presentar quejas ante la <strong>Superintendencia de Industria y Comercio (SIC)</strong>,
+    los que puedo ejercer gratuitamente a través de los canales de atención habilitados para
+    el efecto, relacionados en la Política de Tratamiento de Datos Personales
+    (<strong>Decreto 0268 de 2025</strong>), disponible en el portal web
+    <strong>www.medellin.gov.co</strong>.
+
+    <strong>MI AUTORIZACIÓN SE PERFECCIONA</strong> al momento de diligenciar y/o firmar el presente documento.
         </td>
     </tr>
 </table>
@@ -685,9 +721,9 @@
             <th style="border:1px solid #000; width:9%; padding:4px; text-align:center;">Tipo de<br>Documento</th>
             <th style="border:1px solid #000; width:6%; padding:4px; text-align:center;">Número de<br>Documento</th>
             <th style="border:1px solid #000; width:16%; padding:4px; text-align:center;">Nombres y Apellidos</th>
-            <th style="border:1px solid #000; width:11%; padding:4px; text-align:center;">Cargo /<br>Empleo</th>
-            <th style="border:1px solid #000; width:13%; padding:4px; text-align:center;">Empresa / Entidad</th>
-            <th style="border:1px solid #000; width:9%; padding:4px; text-align:center;">Teléfono</th>
+            <th style="border:1px solid #000; width:11%; padding:4px; text-align:center;">Cargo /Empleo /Calidad en la que actúa</th>
+            <th style="border:1px solid #000; width:13%; padding:4px; text-align:center;">Empresa / Entidad / Dependencia / Organización</th>
+            <th style="border:1px solid #000; width:9%; padding:4px; text-align:center;">Teléfono Fijo / Número Celular</th>
             <th style="border:1px solid #000; width:18%; padding:4px; text-align:center;">Correo Electrónico</th>
             <th style="border:1px solid #000; width:9%; padding:4px; text-align:center;">Firma</th>
 
