@@ -50,6 +50,27 @@
             
         </div>
 
+          {{-- Tipo de reunión --}}
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Tipo de reunión:</label>
+                    <select name="tipo_reunion_id" class="form-select form-select-sm" required>
+                            <option value="{{ $tipo->id }}">
+                                {! $t1_tipo_reunion !}
+                            </option>
+                    </select>
+                </div>
+
+                {{-- Modalidad --}}
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Modalidad:</label>
+                    <select name="modalidad_id" class="form-select form-select-sm" required>
+                            <option value="{{ $modalidad->id }}">
+                                {! $t1_modalidad !}
+                            </option>
+                    </select>
+                </div>
+            </div>
+
         <div class="text-center">
             <button type="submit" class="btn btn-primary" style=" border:none">Guardar</button>
         </div>

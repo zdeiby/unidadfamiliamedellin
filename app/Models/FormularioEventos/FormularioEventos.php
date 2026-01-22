@@ -9,7 +9,11 @@ class FormularioEventos extends Model
     use HasFactory;
 
     protected $fillable = [
-       'documento', 'name', 'start_date', 'start_time', 'end_time', 'manager', 'organizer','qr_token'
+       'documento', 'name', 'start_date', 'start_time', 'end_time', 'manager', 'organizer','qr_token','dependencia',
+        'departamento',
+        'ciudad',
+        'tipo_reunion',
+        'modalidad_reunion',
     ];
 
 
