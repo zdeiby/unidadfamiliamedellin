@@ -485,7 +485,7 @@
         </td>
 
         <td rowspan="2" style="border:1px solid #000; padding:4px; text-align:center;">
-             @if(($datos['modalidad_reunion'] ?? null) == 2)
+             @if(($datos['modalidad_reunion'] ?? null) == 3)
                 <span style="
                     display:inline-block;
                     width:14px;
