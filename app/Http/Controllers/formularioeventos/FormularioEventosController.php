@@ -37,10 +37,11 @@ class FormularioEventosController extends Controller
         
      
   
- // dd($eventos);
+        $datos['t1_tipo_reunion'] = ListasGenerales::obtenerOpciones('comunicaciones_laravel.t1_tipo_reunion');
+        $datos['t1_modalidad'] = ListasGenerales::obtenerOpciones('comunicaciones_laravel.t1_modalidad');
   
 
-        return view('formularioeventos/formulario', compact('eventos'));
+        return view('formularioeventos/formulario', compact('eventos', 'datos'));
     }
 
     public function fc_guardar(Request $request)

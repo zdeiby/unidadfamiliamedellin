@@ -49,24 +49,24 @@
 
             
         </div>
-
+<div class="row">
           {{-- Tipo de reunión --}}
-                <div class="col-md-2 mb-3">
+                <div class="col-md mb-3">
                     <label class="form-label">Tipo de reunión:</label>
                     <select name="tipo_reunion" class="form-select form-select-sm" required>
-                                {!! $t1_tipo_reunion !!}
+                                {!! $datos['t1_tipo_reunion'] !!}
                     </select>
                 </div>
 
                 {{-- Modalidad --}}
-                <div class="col-md-2 mb-3">
+                <div class="col-md mb-3">
                     <label class="form-label">Modalidad:</label>
                     <select name="modalidad_reunion" class="form-select form-select-sm" required>
-                                {!! $t1_modalidad !!}
+                                {!! $datos['t1_modalidad'] !!}
                     </select>
                 </div>
             </div>
-
+  </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary" style=" border:none">Guardar</button>
         </div>
