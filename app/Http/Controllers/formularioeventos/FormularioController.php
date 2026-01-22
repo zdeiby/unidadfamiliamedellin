@@ -19,8 +19,8 @@ class FormularioController extends Controller
         
         // $datos['t1_sino'] = ListasGenerales::obtenerOpciones('listas_generales.t1_sino');
         // $datos['t1_tipo_documento'] = ListasGenerales::obtenerOpciones('listas_generales.t1_tipo_documento');
-        $datos['t1_tipo_reunion'] = ListasGenerales::obtenerOpciones('t1_tipo_reunion');
-        $datos['t1_modalidad'] = ListasGenerales::obtenerOpciones('t1_modalidad');
+        $datos['t1_tipo_reunion'] = ListasGenerales::obtenerOpciones('comunicaciones_laravel.t1_tipo_reunion');
+        $datos['t1_modalidad'] = ListasGenerales::obtenerOpciones('comunicaciones_laravel.t1_modalidad');
 
         $nombre = FormularioEventos::where('qr_token',$qr)->value('name');
         $datos['qr_token']= $qr;
