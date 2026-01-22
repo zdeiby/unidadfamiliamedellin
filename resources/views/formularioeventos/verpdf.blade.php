@@ -240,13 +240,13 @@
             <table style="width:100%; border-collapse:collapse;">
                 <tr>
                     <td style="border-right:1px solid #000; padding:4px;">
-                        {{ $datos['dependencia'] ?? '' }}
+                        {{ $datos['dependencia'] ?? 'Secretaria de Inclusion Social y Familia' }}
                     </td>
                     <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:20%;">
                         Organizador
                     </td>
                     <td style="padding:4px;">
-                        {{ $datos['organizador'] ?? '' }}
+                       Despacho del secretario
                     </td>
                 </tr>
             </table>
@@ -408,19 +408,19 @@
             <table style="width:100%; border-collapse:collapse;">
                 <tr>
                     <td style="border-right:1px solid #000; padding:4px;">
-                        {{ $datos['responsable'] ?? '' }}
+                         {{ $datos['organizador'] ?? '' }}
                     </td>
                     <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:20%;">
                         Departamento
                     </td>
                     <td style="border-right:1px solid #000; padding:4px;">
-                        {{ $datos['departamento'] ?? '' }}
+                        {{ $datos['departamento'] ?? 'Antioquia' }}
                     </td>
                     <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:14%;">
                         Ciudad
                     </td>
                     <td style="padding:4px;">
-                        {{ $datos['ciudad'] ?? '' }}
+                        {{ $datos['ciudad'] ?? 'Medellín' }}
                     </td>
                 </tr>
             </table>
