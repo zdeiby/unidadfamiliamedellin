@@ -56,6 +56,8 @@ class FormularioEventosController extends Controller
             'end_time' => 'nullable',
             'manager' => 'required|string|max:255',
             'organizer' => 'required|string|max:255',
+            'tipo_reunion'  => 'required|integer',
+            'modalidad_reunion'     => 'required|integer',
         ]);
 
         // Guardar en la base de datos
@@ -67,7 +69,9 @@ class FormularioEventosController extends Controller
             'end_time' => $request->end_time,
             'manager' => $request->manager,
             'organizer' => $request->organizer,
-            'qr_token' => $qrToken
+            'qr_token' => $qrToken,
+            'tipo_reunion'       => $request->tipo_reunion,
+            'modalidad_reunion'  => $request->modalidad_reunion,
         ]);
 
         return redirect()->route('formularioeventos.index')->with('success', 'Evento guardado exitosamente.');
