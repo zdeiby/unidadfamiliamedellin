@@ -101,6 +101,8 @@ class FormularioController extends Controller
                     'telefono' => strtoupper($request->telefono),
                     // 'autorizacion' => $request->autorizacion,
                     'firma' => $filename, // Guarda solo el nombre del archivo
+                    'tipo_documento' => $request->tipo_documento,
+                    'empresa'        => strtoupper($request->empresa),
                 ]
             );
 

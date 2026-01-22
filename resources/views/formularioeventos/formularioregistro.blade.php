@@ -70,6 +70,19 @@
                 </div>
 
                 <div class="col-md-6" id="documentodiv" >
+                    <label for="validationServer04" class="form-label">TIPO DE DOCUMENTO:</label>
+                     <select name="tipo_documento" id="tipo_documento" class="form-select form-select-sm" required>
+                        <option value="">Seleccione…</option>
+                        <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                        <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                        <option value="Cédula de extranjería">Cédula de extranjería</option>
+                        <option value="Registro civil">Registro civil</option>
+                        <option value="Permiso especial de permanencia">Permiso especial de permanencia</option>
+                        <option value="Permiso por protección temporal">Permiso por protección temporal</option>
+                      </select>
+                </div>
+
+                <div class="col-md-6" id="documentodiv" >
                     <label for="validationServer04" class="form-label">NÚMERO DE DOCUMENTO:</label>
                     <input type="text" class="form-control form-control-sm "  name="documento"  id="documento" value="" required>
                 </div>
@@ -78,8 +91,12 @@
                     <input type="email" placeholder="CORREO ELECTRÓNICO" class="form-control form-control-sm " style="text-transform: uppercase;" name="correo"  id="correo" value="" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="validationServer04" class="form-label">ORGANIZACIÓN Y CARGO:</label>
+                    <label for="validationServer04" class="form-label">CARGO EMPLEO:</label>
                     <input type="text" class="form-control form-control-sm" placeholder="CARGO" style="text-transform: uppercase;" onkeypress="return soloLetras(event)"  id="cargo" name="cargo" value="" required>
+                </div>
+                 <div class="col-md-6">
+                    <label for="validationServer04" class="form-label">EMPRESA ENTIDAD:</label>
+                    <input type="text" class="form-control form-control-sm" placeholder="EMPRESA ENTIDAD" style="text-transform: uppercase;" onkeypress="return soloLetras(event)"  id="empresa" name="cargo" value="" required>
                 </div>
                 <div class="col-md-6" style="">
                     <label for="validationServer04" class="form-label">TELEFONO:</label>

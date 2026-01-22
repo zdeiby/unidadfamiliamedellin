@@ -25,7 +25,9 @@ class FormularioGuardarAsistentes extends Model
         'cargo',
         'correo',
         'firma',
-        'telefono'
+        'telefono',
+        'tipo_documento',
+        'empresa',
     ];
 
     public $timestamps = true; // Para manejar created_at y updated_at automáticamente
