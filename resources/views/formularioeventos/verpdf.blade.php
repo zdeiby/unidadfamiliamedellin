@@ -81,7 +81,7 @@
         </td>
 
         <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
-            @if(($datos['tipo_reunion'] ?? '')=='Capacitación')
+              @if(($datos['tipo_reunion'] ?? null) == 1)
                 <span style="
                     display:inline-block;
                     width:14px;
@@ -134,7 +134,7 @@
         </td>
 
         <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
-            @if(($datos['tipo_reunion'] ?? '')=='Seguimiento')
+           @if(($datos['tipo_reunion'] ?? null) == 5)
                 <span style="
                     display:inline-block;
                     width:14px;
@@ -187,7 +187,8 @@
         </td>
 
         <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
-            @if(($datos['modalidad'] ?? '')=='Presencial')
+           @if(($datos['modalidad_reunion'] ?? null) == 1)
+
                 <span style="
                     display:inline-block;
                     width:14px;
@@ -256,7 +257,8 @@
         </td>
 
         <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['tipo'] ?? '')=='Entrenamiento')
+            @if(($datos['tipo_reunion'] ?? null) == 2)
+
                 <span style="
                     display:inline-block;
                     width:14px;
@@ -305,7 +307,7 @@
         </td>
 
         <td rowspan="2" style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['tipo'] ?? '')=='Toma de decisiones')
+            @if(($datos['tipo_reunion'] ?? null) == 6)
                 <span style="
                     display:inline-block;
                     width:14px;
@@ -354,7 +356,7 @@
         </td>
 
         <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['modalidad'] ?? '')=='Virtual')
+            @if(($datos['modalidad_reunion'] ?? null) == 2)
                 <span style="
                     display:inline-block;
                     width:14px;
@@ -429,7 +431,7 @@
         </td>
 
         <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['tipo'] ?? '')=='Formación')
+            @if(($datos['tipo_reunion'] ?? null) == 3)
                 <span style="
                     display:inline-block;
                     width:14px;
@@ -483,7 +485,7 @@
         </td>
 
         <td rowspan="2" style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['modalidad'] ?? '')=='Mixta')
+             @if(($datos['modalidad_reunion'] ?? null) == 2)
                 <span style="
                     display:inline-block;
                     width:14px;
@@ -565,7 +567,7 @@
         </td>
 
         <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['tipo'] ?? '')=='Informativa')
+            @if(($datos['tipo_reunion'] ?? null) == 4)
                 <span style="
                     display:inline-block;
                     width:14px;
@@ -615,7 +617,7 @@
         </td>
 
         <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['tipo'] ?? '')=='Otra')
+            @if(($datos['tipo_reunion'] ?? null) == 7)
                 <span style="
                     display:inline-block;
                     width:14px;
