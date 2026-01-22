@@ -62,48 +62,186 @@
 
 
 {{-- ===== Bloque superior estilo FO-GINF (SIN CSS externo) ===== --}}
-<table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:10px; table-layout:fixed;">
-    {{-- FILA 1 --}}
+<table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:10px;">
+    {{-- FILA 1: Tema + Tipo Reunión (Capacitación/Seguimiento) + Modalidad (Presencial) --}}
     <tr>
         <td style="border:1px solid #000; width:10%; padding:4px; font-weight:bold;">Tema</td>
         <td style="border:1px solid #000; width:34%; padding:4px;">
-            {{ $datos['tema'] ?? '' }}
+            {{ $datos['titulo'] ?? '' }}
         </td>
 
-        <td rowspan="5" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center; vertical-align:middle;">
+        {{-- Columna título Tipo Reunión (ocupa 1 columna vertical) --}}
+        <td rowspan="4" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center;">
             Tipo de<br>Reunión
         </td>
 
-        <td style="border:1px solid #000; width:14%; padding:4px; font-weight:bold;">Capacitación</td>
-        <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
-            @if(($datos['tipo_reunion'] ?? '')=='Capacitación') ✓ @endif
+        {{-- Tipo Reunión: 2 columnas (texto + checkbox) --}}
+        <td style="border:1px solid #000; width:14%; padding:4px; font-weight:bold;">
+            Capacitación
         </td>
 
-        <td style="border:1px solid #000; width:14%; padding:4px; font-weight:bold;">Seguimiento</td>
+        <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
+            @if(($datos['tipo_reunion'] ?? '')=='Capacitación')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                    vertical-align:middle;
+                ">
+                    <!-- trazo corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- trazo largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    vertical-align:middle;
+                "></span>
+            @endif
+        </td>
+
+
+        <!-- <td style="border:1px solid #000; width:14%; padding:4px; font-weight:bold;">Seguimiento</td>
         <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
             @if(($datos['tipo_reunion'] ?? '')=='Seguimiento') ✓ @endif
+        </td> -->
+        <td style="border:1px solid #000; width:14%; padding:4px; font-weight:bold;">
+            Seguimiento
         </td>
 
-        <td rowspan="5" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center; vertical-align:middle;">
+        <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
+            @if(($datos['tipo_reunion'] ?? '')=='Seguimiento')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                ">
+                    <!-- palito corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- palito largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                "></span>
+            @endif
+        </td>
+
+
+
+        {{-- Columna título Modalidad Reunión --}}
+        <td rowspan="4" style="border:1px solid #000; width:8%; padding:4px; font-weight:bold; text-align:center;">
             Modalidad<br>Reunión
         </td>
 
-        <td style="border:1px solid #000; width:10%; padding:4px; font-weight:bold;">Presencial</td>
-        <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
-            @if(($datos['modalidad'] ?? '')=='Presencial') ✓ @endif
+        <td style="border:1px solid #000; width:10%; padding:4px; font-weight:bold;">
+            Presencial
         </td>
+
+        <td style="border:1px solid #000; width:4%; padding:4px; text-align:center;">
+            @if(($datos['modalidad'] ?? '')=='Presencial')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                    vertical-align:middle;
+                ">
+                    <!-- trazo corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- trazo largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    vertical-align:middle;
+                "></span>
+            @endif
+        </td>
+
     </tr>
 
-    {{-- FILA 2 --}}
+    {{-- FILA 2: Dependencia + Organizador + Entrenamiento/Toma + Virtual --}}
     <tr>
         <td style="border:1px solid #000; padding:4px; font-weight:bold;">Dependencia</td>
         <td style="border:1px solid #000; padding:0;">
-            <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
+            <table style="width:100%; border-collapse:collapse;">
                 <tr>
-                    <td style="border-right:1px solid #000; padding:4px; width:32%;">
+                    <td style="border-right:1px solid #000; padding:4px;">
                         {{ $datos['dependencia'] ?? '' }}
                     </td>
-                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:18%;">
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:20%;">
                         Organizador
                     </td>
                     <td style="padding:4px;">
@@ -113,38 +251,170 @@
             </table>
         </td>
 
-        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Entrenamiento</td>
-        <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['tipo'] ?? '')=='Entrenamiento') ✓ @endif
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">
+            Entrenamiento
         </td>
 
-        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Toma de decisiones</td>
         <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['tipo'] ?? '')=='Toma de decisiones') ✓ @endif
+            @if(($datos['tipo'] ?? '')=='Entrenamiento')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                    vertical-align:middle;
+                ">
+                    <!-- trazo corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- trazo largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    vertical-align:middle;
+                "></span>
+            @endif
         </td>
 
-        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Virtual</td>
-        <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['modalidad'] ?? '')=='Virtual') ✓ @endif
+
+        <td rowspan="2" style="border:1px solid #000; padding:4px; font-weight:bold;">
+            Toma de decisiones
         </td>
+
+        <td rowspan="2" style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['tipo'] ?? '')=='Toma de decisiones')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                    vertical-align:middle;
+                ">
+                    <!-- trazo corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- trazo largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    vertical-align:middle;
+                "></span>
+            @endif
+        </td>
+
+
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">
+            Virtual
+        </td>
+
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['modalidad'] ?? '')=='Virtual')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                    vertical-align:middle;
+                ">
+                    <!-- trazo corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- trazo largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    vertical-align:middle;
+                "></span>
+            @endif
+        </td>
+
     </tr>
 
-    {{-- FILA 3 --}}
+    {{-- FILA 3: Responsable + Departamento/Ciudad + Formación/Informativa + Mixta --}}
     <tr>
         <td style="border:1px solid #000; padding:4px; font-weight:bold;">Responsable</td>
         <td style="border:1px solid #000; padding:0;">
-            <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
+            <table style="width:100%; border-collapse:collapse;">
                 <tr>
-                    <td style="border-right:1px solid #000; padding:4px; width:32%;">
+                    <td style="border-right:1px solid #000; padding:4px;">
                         {{ $datos['responsable'] ?? '' }}
                     </td>
-                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:18%;">
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:20%;">
                         Departamento
                     </td>
-                    <td style="border-right:1px solid #000; padding:4px; width:20%;">
+                    <td style="border-right:1px solid #000; padding:4px;">
                         {{ $datos['departamento'] ?? '' }}
                     </td>
-                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:10%;">
+                    <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:14%;">
                         Ciudad
                     </td>
                     <td style="padding:4px;">
@@ -154,135 +424,322 @@
             </table>
         </td>
 
-        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Formación</td>
-        <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['tipo'] ?? '')=='Formación') ✓ @endif
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">
+            Formación
         </td>
 
-        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Informativa</td>
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['tipo'] ?? '')=='Formación')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                    vertical-align:middle;
+                ">
+                    <!-- trazo corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- trazo largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    vertical-align:middle;
+                "></span>
+            @endif
+        </td>
+
+
+        <!-- <td style="border:1px solid #000; padding:4px; font-weight:bold;">Informativa</td>
         <td style="border:1px solid #000; padding:4px; text-align:center;">
             @if(($datos['tipo'] ?? '')=='Informativa') ✓ @endif
+        </td> -->
+
+        <td rowspan="2" style="border:1px solid #000; padding:4px; font-weight:bold;">
+            Mixta
         </td>
 
-        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Mixta</td>
-        <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['modalidad'] ?? '')=='Mixta') ✓ @endif
+        <td rowspan="2" style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['modalidad'] ?? '')=='Mixta')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                    vertical-align:middle;
+                ">
+                    <!-- trazo corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- trazo largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    vertical-align:middle;
+                "></span>
+            @endif
         </td>
+ 
     </tr>
 
-    {{-- ✅ FILA 4 (LA QUE FALTABA): "Otra" y espacios para cuadrar la grilla --}}
-    <tr>
-        <td style="border:1px solid #000; padding:4px; font-weight:bold;">&nbsp;</td>
-        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
+    {{-- FILA 4: (vacío a la izquierda para mantener grid) + Otra --}}
+    
 
-        <td style="border:1px solid #000; padding:4px; font-weight:bold;">Otra</td>
-        <td style="border:1px solid #000; padding:4px; text-align:center;">
-            @if(($datos['tipo'] ?? '')=='Otra') ✓ @endif
-        </td>
-
-        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
-        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
-
-        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
-        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
-    </tr>
-
-    {{-- FILA 5 --}}
+    {{-- FILA 5: Fecha + Lugar + Hora inicia + Hora termina (todo en una fila como el PDF) --}}
     <tr>
         <td style="border:1px solid #000; padding:4px; font-weight:bold;">Fecha</td>
         <td style="border:1px solid #000; padding:0;">
-            <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
+            <table style="width:100%; border-collapse:collapse;">
                 <tr>
-                    <td style="border-right:1px solid #000; padding:4px; width:16%;">
+                    <td style="border-right:1px solid #000; padding:4px; width:18%;">
                         {{ $datos['fecha'] ?? '' }}
                     </td>
 
                     <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:10%;">Lugar</td>
                     <td style="border-right:1px solid #000; padding:4px; width:32%;">
-                        {{ $datos['lugar'] ?? '' }}
+                        {{ $datos['contenido'] ?? '' }}
                     </td>
 
                     <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:12%;">Hora inicia</td>
                     <td style="border-right:1px solid #000; padding:4px; width:10%;">
-                        {{ $datos['hora_inicia'] ?? '' }}
+                        {{ $datos['horaInicio'] ?? '' }}
                     </td>
 
                     <td style="border-right:1px solid #000; padding:4px; font-weight:bold; width:12%;">Hora termina</td>
-                    <td style="padding:4px; width:8%;">
-                        {{ $datos['hora_termina'] ?? '' }}
+                    <td style="padding:4px; width:10%;">
+                        {{ $datos['horaFin'] ?? '' }}
                     </td>
                 </tr>
             </table>
         </td>
 
-        {{-- relleno para cuadrar con las columnas a la derecha --}}
-        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
-        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
-        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
-        <td style="border:1px solid #000; padding:4px;">&nbsp;</td>
+        {{-- Rellena columnas del grid (porque Tipo/Modalidad tienen rowspan=5) --}}
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">
+            Informativa
+        </td>
+
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['tipo'] ?? '')=='Informativa')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                    vertical-align:middle;
+                ">
+                    <!-- trazo corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- trazo largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    vertical-align:middle;
+                "></span>
+            @endif
+        </td>
+
+
+
+        <td style="border:1px solid #000; padding:4px; font-weight:bold;">
+            Otra
+        </td>
+
+        <td style="border:1px solid #000; padding:4px; text-align:center;">
+            @if(($datos['tipo'] ?? '')=='Otra')
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    background:#0b66ff;
+                    position:relative;
+                    vertical-align:middle;
+                ">
+                    <!-- trazo corto -->
+                    <span style="
+                        position:absolute;
+                        left:3px;
+                        top:7px;
+                        width:4px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(45deg);
+                    "></span>
+
+                    <!-- trazo largo -->
+                    <span style="
+                        position:absolute;
+                        left:6px;
+                        top:6px;
+                        width:7px;
+                        height:2px;
+                        background:#fff;
+                        transform:rotate(-45deg);
+                    "></span>
+                </span>
+            @else
+                <span style="
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #000;
+                    vertical-align:middle;
+                "></span>
+            @endif
+        </td>
+
+        <!-- <td  style="border:1px solid #000; padding:4px; font-weight:bold; width:12%;">&nbsp;Mixta</td>
+        <td rowspan="2"style="border:1px solid #000; padding:4px;">&nbsp;</td> -->
     </tr>
 </table>
-
 
 
 
 {{-- ===== Aviso de privacidad ===== --}}
-<div class="aviso">
-    <span class="label">AVISO DE PRIVACIDAD Y AUTORIZACIÓN:</span>
-    En cumplimiento de la Ley 1581 de 2012 y sus normas reglamentarias y complementarias autorizo al Distritos Especial de Ciencia, Tecnología e Innovación de Medellín identificado con NIT 890.905.211-1, como Responsable para tratar mis datos personales conforme a su Política de Tratamiento de Datos Personales Decreto 1096 de 2018 disponible en www.medellin.gov.co, para que sean incluidos en sus bases de datos, para efectuar tratamiento de recolección, almacenamiento, uso, circulación, indexación y analítica, sobre los datos personales bajo la finalidad principal del Distrito de Medellín en relación a la focalización en la asignación de servicios y beneficios de acuerdo con la oferta institucional vigente además de la finalidad del registro o evidencia de la asistencia a la reunión o evento relacionado en el formato diligenciado; esta información podrá ser almacenada en archivos asociados a base de datos relacionadas con los eventos y reuniones de la dependencia que los citó a la sesión, en esa medida, declaro que la información suministrada es correcta, veraz, verificable y actualizada. Declaro que conozco el derecho a conocer, consultar, actualizar, rectificar y suprimir mi información, solicitar prueba de esta autorización y revocarla, los que puedo ejercer a través de los canales: portal web www.medellin.gov.co, Línea de Atención 4444144, Centro de Servicios a la Ciudadanía (Calle 44 N 52 - 165 la Alpujarra) y sedes externas. SU ACEPTACIÓN SE PERFECCIONA al momento de diligenciar y/o firmar el presente documento bien sea de manera manuscrita o mediante el uso de firma electrónica dispuesta en el sistema electrónico adoptado por el Distrito de Medellín.
-</div>
+<table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:10px; margin-top:8px;">
+    <tr>
+        <td style="border:1px solid #000; padding:6px 8px; text-align:justify; line-height:1.25;">
+            <strong>AVISO DE PRIVACIDAD Y AUTORIZACIÓN:</strong>
+            En cumplimiento de la Ley 1581 de 2012 y sus normas reglamentarias y complementarias autorizo al Distritos Especial de Ciencia, Tecnología e Innovación de Medellín identificado con NIT 890.905.211-1, como Responsable para tratar mis datos personales conforme a su Política de Tratamiento de Datos Personales Decreto 1096 de 2018 disponible en www.medellin.gov.co, para que sean incluidos en sus bases de datos, <strong>para efectuar tratamiento de recolección, almacenamiento, uso, circulación, indexación y analítica, sobre los datos personales bajo la finalidad principal del Distrito de Medellín en relación a la focalización en la asignación de servicios y beneficios de acuerdo con la oferta institucional vigente además de la finalidad del registro o evidencia de la asistencia a la reunión o evento relacionado en el formato diligenciado</strong>; esta información podrá ser almacenada en archivos asociados a base de datos relacionadas con los eventos y reuniones de la dependencia que los citó a la sesión, en esa medida, declaro que la información suministrada es correcta, veraz, verificable y actualizada. Declaro que conozco el derecho a conocer, consultar, actualizar, rectificar y suprimir mi información, solicitar prueba de esta autorización y revocarla, los que puedo ejercer a través de los canales: portal web www.medellin.gov.co, Línea de Atención 4444144, Centro de Servicios a la Ciudadanía (Calle 44 N 52 - 165 la Alpujarra) y sedes externas.
+            SU ACEPTACIÓN SE PERFECCIONA al momento de diligenciar y/o firmar el presente documento bien sea de manera manuscrita o mediante el uso de firma electrónica dispuesta en el sistema electrónico adoptado por el Distrito de Medellín.
+        </td>
+    </tr>
+</table>
 
-{{-- ===== Tabla asistentes ===== --}}
-<table class="grid asist" style="margin-top:10px;">
+<table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:10px; margin-top:10px; table-layout:fixed;">
     <thead>
         <tr>
-            <th style="width:3%;">N°</th>
-            <th style="width:10%;">Tipo de<br>Documento</th>
-            <th style="width:10%;">Número de<br>Documento</th>
-            <th style="width:17%;">Nombres y Apellidos</th>
-            <th style="width:12%;">Cargo /<br>Empleo/<br>Calidad en<br>la que actúa</th>
-            <th style="width:16%;">Empresa / Entidad /<br>Dependencia /<br>Organización</th>
-            <th style="width:12%;">Teléfono Fijo /<br>Número Celular</th>
-            <th style="width:12%;">Correo Electrónico</th>
-            <th style="width:8%;">Firma</th>
+            <th style="border:1px solid #000; width:3%; padding:4px; text-align:center;">N°</th>
+            <th style="border:1px solid #000; width:9%; padding:4px; text-align:center;">Tipo de<br>Documento</th>
+            <th style="border:1px solid #000; width:6%; padding:4px; text-align:center;">Número de<br>Documento</th>
+            <th style="border:1px solid #000; width:16%; padding:4px; text-align:center;">Nombres y Apellidos</th>
+            <th style="border:1px solid #000; width:11%; padding:4px; text-align:center;">Cargo /<br>Empleo</th>
+            <th style="border:1px solid #000; width:13%; padding:4px; text-align:center;">Empresa / Entidad</th>
+            <th style="border:1px solid #000; width:9%; padding:4px; text-align:center;">Teléfono</th>
+            <th style="border:1px solid #000; width:18%; padding:4px; text-align:center;">Correo Electrónico</th>
+            <th style="border:1px solid #000; width:9%; padding:4px; text-align:center;">Firma</th>
+
         </tr>
     </thead>
 
     <tbody>
-@foreach($integrante as $index => $a)
-    <tr>
-        <td>{{ $index + 1 }}</td>
+    @foreach($integrante as $index => $a)
+        <tr>
+            <td style="border:1px solid #000; padding:4px; text-align:center;">
+                {{ $index + 1 }}
+            </td>
 
-        {{-- Tipo de documento: si no lo tienes en BD, déjalo fijo --}}
-        <td>{{ $a->tipo_documento ?? 'Cédula de Ciudadanía' }}</td>
+            <td style="border:1px solid #000; padding:4px; text-align:center;">
+                {{ $a->tipo_documento ?? 'Cédula de Ciudadanía' }}
+            </td>
 
-        {{-- Tu PK es documento --}}
-        <td>{{ $a->documento ?? '' }}</td>
+            <td style="border:1px solid #000; padding:4px; text-align:center;">
+                {{ $a->documento ?? '' }}
+            </td>
 
-        {{-- Si ya tienes nombres separados como antes --}}
-        <td class="left">
-            {{ trim(($a->nombre1 ?? '').' '.($a->nombre2 ?? '').' '.($a->apellido1 ?? '').' '.($a->apellido2 ?? '')) }}
-        </td>
+            <td style="border:1px solid #000; padding:4px; text-align:left;">
+                {{ trim(($a->nombre1 ?? '').' '.($a->nombre2 ?? '').' '.($a->apellido1 ?? '').' '.($a->apellido2 ?? '')) }}
+            </td>
 
-        <td class="left">{{ $a->cargo ?? '' }}</td>
+            <td style="border:1px solid #000; padding:4px; text-align:left;">
+                {{ strtolower($a->cargo) ?? '' }}
+            </td>
 
-        {{-- Si no tienes empresa/entidad, puedes usar algo existente o dejar vacío --}}
-        <td class="left">{{ $a->empresa ?? '' }}</td>
+            <td style="border:1px solid #000; padding:4px; text-align:left;">
+                {{ $a->empresa ?? '' }}
+            </td>
 
-        <td>{{ $a->telefono ?? '' }}</td>
-        <td class="left">{{ $a->correo ?? '' }}</td>
+            <td style="border:1px solid #000; padding:4px; text-align:center;">
+                {{ $a->telefono ?? '' }}
+            </td>
 
-        <td class="firma-box">
-            @if(!empty($a->firma))
-                {{-- DOMPDF: usa public_path, NO asset --}}
-                <img class="firma-img" src="{{ public_path('firma/' . $a->firma) }}">
-            @endif
-        </td>
-    </tr>
-@endforeach
-</tbody>
+            <td style="border:1px solid #000; padding:4px; text-align:left; 
+                    white-space:nowrap; font-size:11px;">
+                {{ strtolower($a->correo ?? '') }}
+            </td>
 
+
+            <td style="border:1px solid #000; padding:4px; text-align:center; height:40px;">
+                @if(!empty($a->firma))
+                    <img src="{{ public_path('firma/' . $a->firma) }}" style="max-height:35px; max-width:120px;">
+                @endif
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
 </table>
+
+
 
 {{-- ===== Página 3: Historial del evento (opcional) ===== --}}
 @if(!empty($historial))
