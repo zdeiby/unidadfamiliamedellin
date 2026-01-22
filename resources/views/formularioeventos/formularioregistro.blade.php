@@ -96,7 +96,7 @@
                 </div>
                  <div class="col-md-6">
                     <label for="validationServer04" class="form-label">EMPRESA ENTIDAD:</label>
-                    <input type="text" class="form-control form-control-sm" placeholder="EMPRESA ENTIDAD" style="text-transform: uppercase;" onkeypress="return soloLetras(event)"  id="empresa" name="cargo" value="" required>
+                    <input type="text" class="form-control form-control-sm" placeholder="EMPRESA ENTIDAD" style="text-transform: uppercase;" onkeypress="return soloLetras(event)"  id="empresa" name="empresa" value="" required>
                 </div>
                 <div class="col-md-6" style="">
                     <label for="validationServer04" class="form-label">TELEFONO:</label>
